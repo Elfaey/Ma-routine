@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Routine · Tracker</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIk1hIFJvdXRpbmUiLCAic2hvcnRfbmFtZSI6ICJSb3V0aW5lIiwgInN0YXJ0X3VybCI6ICIuIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMxMzE3MjAiLCAidGhlbWVfY29sb3IiOiAiIzEzMTcyMCIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQU1BQUFBREFDQVlBQUFCUzNHd0hBQUFLcVVsRVFWUjQydTNkMzFyVVJoakg4YjJISHZTMGg3Mk4za0V2b3JaV0tJcTlEYW9vNEtuV2dpaWl0clo2ZTlhRlhjZ21NKytmbVFsTU10OTVudmZJSkx1RzMyZm1UVml5aThXRXhqZmZmdmVGcXI4V0RBQUFnQUVBQURBQUFBQUdBQURBQUFBQUdBQUFBQU1BQUdBQUFBQU1BQUNBQVFBQU1BQUFBQVlBQU1BQUFBQVlBQUFBQXdBQVlBQUFBQXdBQUlBQkFBQUFnQUlBQUNnQUFJQUNBQUFvQUFDQUFnQkJwNEJCNkNrd0VId0tDSVNmQWdIaHAwQkErQ2tRRUg0S0JJU2ZBZ0hocDBBQUFBb0FoSjhDQVFBb0FBQ0FBZ0RocDBBQUFBb0FBS0FBQUFBS0FBQ2dBQUFBYXM0QU9NbFUwOEE0Q1JRQUtBb0FGQVVBaWdJQVJRR0FvZ0JBVVFDZ1JxcnZmL3pocWpnZkFHaWlkazZmYmdTL1g4dC81endCWUhiMTI5ZGdyMHNDME4yTzh3YUEyWVErQlFBWUFERDk0TDhlbGdnZ3NEMFFBRENkNEwvV3l3MGdBSUx6RFlESkJiOFlBQ0FBb0pyd0N3SGRmdk1rV0JLQTJEN1M2L0J6QUVBMXdZOEZPQmVBQlFNL0Z3RGNTdmd0b2QwK3V5NFJRR2U3RkF6OGZBQlFSL0RQNG1VRzBDOGdBS0NHOEh0RHY5VXJDVUIvV3k4R0VBQmd0UEJiZzk4UDhkYmJ6UklCOUxaVlFTZ1ErUGtCWUx6d3g0TC9ObFQ3VnlVRDJPL1VreWdJQ3dRUUFHQ2Nsc2NVL1Axd25Tc0F6dmZqK3laQW9DVUN3R2l6dmhyODg4MjZ0eW9Kd0hxYi9yNHVDS3dHQUNnZS9vVGczNHVVQlVDL1NrQUFBUURLaEQ4VWZDWDA5OTVkbHdpZ3M1MGR3eVlFRUFEZ0JzSy9PZU5yb1U4Q29HQ0lyZ2dnQUVESjhHL0Z3aCthOWQvcGxRUWdnaUc2R3ZSYkloQUFRQUtRRW41cjhIOTkvM2lqSkFEOWJWMFFFaEFBZ1BBUEFVZ3RqM0hXN3djNUZZQ0t3YmdhaEJDd0NqUU9RQTMvbVJKK1ovQXY2b01DNE1OajlSZ1NoQ0NDTXhBQXdCSCs3VWo0cFZsZkNueS9WQUQ5c2tLUVdpTGh3cmhsQkF2Q2IyaDlVc0lmQ1BMZFZVa0ExdHRZSWRnUXlLMVF5d2dBWUFqL2xpZjhrZERmL2Z1NlJBQ2Q3YUlZakFpMkhBZ0FRUGoxdXoyTzhJZUNmMW1QRkFDUGh2dUVJSGdRY0ZFTUFQRURicGErWHdxL0d2eEhHNlVENkpZZGdobUJBcUFsQkF0bWYwUGY3d2wvTFBqL1hKY0lvTE9kQkNFZEFhdEFrd0JLemY2MjhBK0QvMHVuSkFEZDdVUUlWZ1NzQWdEb1ByY25aL1ozaFQ4US9JdjZxQUQ0T054bkNDRVhnVzBWYU9HNVF3dG0vOTdzYnduL2V6MzgvZEIzU3dYUXJUNEVDY0Y3SndKV2dma0Q2RCsxcmVUc254SitONEFNQkttclFFdFBuMXN3KzIvMi9zWENId2p5ei8vK2NWRVNnUFUyRW9Sc0JGd0x0QUVnT3Z1L0tUbjc2K0ZmaDlvRElBb2hocURFS3ZDbXZWVmdRZnNqMy9reHpmNk84SHNCMkJBWVZ3SEhIU0VBekNIOHA0VXZmcDJ6L3lETS8xMldDR0MxallpZzlDcGd1QnMwVndTTFZ0c2ZOd0RuN0I4THZ4bUFHMEY4RlNoeE53Z0FEZmIvcnRuZkVQNDdxNUlBckxleEluQ3ZBbHdIekI5QTZPdUp6UDIvMXY1NFovOXUrRDlkbGdoZ3RVME1nV1VWc0xSQktkY0JjMFFBQU1mdFQwdjdvNFgvenFjOUJjQ2VIWUhXQm1YZURnWEFCR3NuOGdWMVpmdC9ZL3N6QUxCbkJMRG5XZ1VzYlZES2RVQUl3TnkreDdnSkFPVXZnQTN0VDJUMnYvTlpBZkI1VDEwRjFEWm9qQXRoQUxRRlFMMEFkZ1BZY3dMWUt3cEF2UkFHd0F6Qy8rcnByUUpRMjUrdjRmNUpBYkQ4OTQxVklPVTZZR1FBeS9NTUFBQUFBQUFBQUFBQUFORFlOUUFBcWd6L1FWRUEzQVdTQVN6UE53QW1Bb0RmQTVUOVBRQUE1Z2FBM3dRRFlEWUFYajNsczBBamZoWm9mWTRCVURHQUhRa0Fud1pOL2pUb0RnQXFEZi9Kd1FyQWdSa0Fmdy9nLzN1QWJ2dHpVU2NIQUtnYUFIOFJOdG9kSUFCVVZQZFBEam9JMGkrRStadGcrd1h3OG56ZkI4QkVBZkJVQ0hmL0Q0QXBBVWk5RHVDNVFPWUxZQUJVQ3lDMURlTEpjT2JaSHdEMUFVaHRnM2cyYUhyN0E0Q2FBU1RkRGVMcDBQTGRId0RVQ2VENElLME40dnNCL0xOL0Y4QXhBS29DVUtZTjRodGlyTzBQQUdvSE1OSXEwTUozaEZuYUh3RFVCR0NNVmFEUmI0bTB6djRBbUFLQUFxMVFTOThUN0puOUFWQWJnSnlMWWI0cDNuWHhDNENLQWVTdUF1cjFnQlZCQklJRXdCcDhlL2dEZlgraDJSOEFsZFNEdnc2TEk5aUtJSkRhSVJGQ0I0UUtRRGxHNkhYRGJjOTErTGRHQ1AveXZBTmdFZ0RrVnNoN1VheXRCaG9FRVVCaThLUGh0L2I5bHRZSEFQVUNLTG9LUkZjQ2Uwc2tZZkFBa0k0cnRqekt6RjlpOWdmQXBBQ01nOEFEWVYwU0FNdisxbGsvTy93QW1CYUFwRmJJaUNEYUVvVldBd1ZERW9EQThUZURIMmw1ak9IM3RqNEFtTUlxa05BSytSQW9xMEVFZ3huQXVSRDgwS3p2RFg5QzZ6T24yWCtXQU1SVm9DU0NHQVFEQmhHQU9mVEQ0SmNNZnd1ei83d0F2RHowdDBKZUJJa1EraUFzQVByNzVnVGZGWDVqNjdNODN3Q1lDb0FNQk5wcVlJTFFReUVCR0liZEVYekxySjhZZmdCTUFVQXBCQW1yUVJ6Q0VJUUlJQlo0Wi9DbFdiOUUrQUV3UlFRbkl5Q1FJRVJBeUFEQ2dmY0VQenY4SjIyRXZ3a0FwUkY0SU1SQWlBQzB3SHVEWHpMOEFLaTdkbDhlRmtPUUJVSEFzSzBBMkU0SXZUbjRoY0svQzRCS0FmeDVXQTZCY1RWUUlRUkFtQUVZamh0N1QvRlpQei84eS9NTWdEa2l5RmdOUEJoRUFEbWhkOHo2aEgvbUFNd0lqZzBJUXF1QkFrSENrQUpBZTYzK2U1Tm1mZlBkbm43NEFUQUZBRWRaQ0lZdGtiSWFHREYwU3dMZ09VN29mVVJuZmFYbHNZWi9lWDRCTUlWVm9OOEtwU0FRVm9NY0NOa0FUTUczdHp4UytCOXNoUDl3ZGxtWktZQ2pEUVN1bFNBQlFoVERhU0VBcDByb000SnZuL25uTi92UEZrQnBCR0piNU1Hd0toR0FzbTg4OUVxN1EvZ2JBL0RpeUlYQXRSbzRNSVJRV0FHRWpxT0ZQbm5XVjhLL1BKOEFtQnFBS3dSSDZkY0Ywb293Z0JEQUVJQWhBWWdIUFJMNldLc1RDYjZuMzc4NmR5OEEwQlNDSkFoQkRHRVVJZ0F0N05wczd3bCs0K0dmUFlDSFgzOXdEd1VFSlNFTU1BZ2daQUI2NElPaHp3MStKUHpyY3dpQWhoR0lFQ0lZZ2lCV0pRS0k3SFBmR2ZwbzhBbC9td0NHQ0VhQUlHRG9sZ1RBc3IvMkhyS0Mzd3MvQU9hSUlMUWFoSzROY2lBSUtGd0FISzlqQ2Y2dzF4LzIrNjJFdngwQXo0OHVLM1UxRUNDNE1Sd3JBSTRMaFQ0V2ZPT3N2ejVuQUpnN0FtRTE4RUt3Z3NnQllIbDlQZmp5ck45SytKc0NzSUhBdWhwSUVJd1lRamcwQUNuSERiMC9NZmpDck45SytDOEFqRDJxQmFDdUJtRUlKVEJJQUlxRlhnbStGUDZhQUN5bVBxcGVCVklnV0RBb0tKSUFDSzhURDcwLytMWE4vZ0M0QlFSeENCa1lPaVVDTUI3REhQcFk4Q2NRZmdDTVZMOC9mM1pSTGdnV0REMFF1NFVBN0txQmo0ZmVHdnoxT1FGQUF3QzZDS3dRa2pCRVVFZ0FiR0ZQQ0wwUy9CckRENEFiUkJDRmtJUkJSaUVDc0lZOUkvVDk0TmNhL2xrQW1Cb0NMNFFCQmhIRVpja0FsUDFmR0VMdkNEN2hCMEMwb2hBRURGRVVuUklCQ1B0cHJ5bTlYK24vQ1lDR0FXZ0lWQWhHRU4yU0FIaU9ZM2xmMnYrdDZWOVNnY0NPd0lWQlFaRUV3UEc2MXY4TDRRZEFFb0lrREowU0FTUWUwL3ZlbS8rSUFnaktJRWhCa1FzZzl6MFNmaENNaWtDRFlRVXd4dnNnL0NDNE5RVHJrZ0NNK2JxRUh3UlZJTGdOQUlRZkJOVkF1RWtBZkNZZkJOVWh1Q2tBaEI4SVZTSzRDUUFFSHd6VlFoZ1RBS0VIUnZVSXhnSkEwQUV3Q1FpbEFURFRBMkJTQ0VvQ29OVUJ3T1FnbEFCQXJ3K0F5VUxJQWNDdFRRQjhtVHFFRkFBOGJJb3gyYWZZNVFEZ2FXdU15UVBvWTlBQThMaEJ4bXdCZEtzYmZKNjN5V2dPQUErY1pRQUFBQXdBQUlBQkFBQXdBQUFBQmdBQXdBQUFBQmdBQUFBREFBQmdBQUFBRE1JRkFBQlFBQUFBQlFBQVVBQUFBQVdBblBFL05LVDhhbkV3ODFzQUFBQUFTVVZPUks1Q1lJST0iLCAic2l6ZXMiOiAiMTkyeDE5MiIsICJ0eXBlIjogImltYWdlL3BuZyJ9LCB7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQU1BQUFBREFDQVlBQUFCUzNHd0hBQUFLcVVsRVFWUjQydTNkMzFyVVJoakg4YjJISHZTMGg3Mk4za0V2b3JaV0tJcTlEYW9vNEtuV2dpaWl0clo2ZTlhRlhjZ21NKytmbVFsTU10OTVudmZJSkx1RzMyZm1UVml5aThXRXhqZmZmdmVGcXI4V0RBQUFnQUVBQURBQUFBQUdBQURBQUFBQUdBQUFBQU1BQUdBQUFBQU1BQUNBQVFBQU1BQUFBQVlBQU1BQUFBQVlBQUFBQXdBQVlBQUFBQXdBQUlBQkFBQUFnQUlBQUNnQUFJQUNBQUFvQUFDQUFnQkJwNEJCNkNrd0VId0tDSVNmQWdIaHAwQkErQ2tRRUg0S0JJU2ZBZ0hocDBBQUFBb0FoSjhDQVFBb0FBQ0FBZ0RocDBBQUFBb0FBS0FBQUFBS0FBQ2dBQUFBYXM0QU9NbFUwOEE0Q1JRQUtBb0FGQVVBaWdJQVJRR0FvZ0JBVVFDZ1JxcnZmL3pocWpnZkFHaWlkazZmYmdTL1g4dC81endCWUhiMTI5ZGdyMHNDME4yTzh3YUEyWVErQlFBWUFERDk0TDhlbGdnZ3NEMFFBRENkNEwvV3l3MGdBSUx6RFlESkJiOFlBQ0FBb0pyd0N3SGRmdk1rV0JLQTJEN1M2L0J6QUVBMXdZOEZPQmVBQlFNL0Z3RGNTdmd0b2QwK3V5NFJRR2U3RkF6OGZBQlFSL0RQNG1VRzBDOGdBS0NHOEh0RHY5VXJDVUIvV3k4R0VBQmd0UEJiZzk4UDhkYmJ6UklCOUxaVlFTZ1ErUGtCWUx6d3g0TC9ObFQ3VnlVRDJPL1VreWdJQ3dRUUFHQ2Nsc2NVL1Axd25Tc0F6dmZqK3laQW9DVUN3R2l6dmhyODg4MjZ0eW9Kd0hxYi9yNHVDS3dHQUNnZS9vVGczNHVVQlVDL1NrQUFBUURLaEQ4VWZDWDA5OTVkbHdpZ3M1MGR3eVlFRUFEZ0JzSy9PZU5yb1U4Q29HQ0lyZ2dnQUVESjhHL0Z3aCthOWQvcGxRUWdnaUc2R3ZSYkloQUFRQUtRRW41cjhIOTkvM2lqSkFEOWJWMFFFaEFBZ1BBUEFVZ3RqM0hXN3djNUZZQ0t3YmdhaEJDd0NqUU9RQTMvbVJKK1ovQXY2b01DNE1OajlSZ1NoQ0NDTXhBQXdCSCs3VWo0cFZsZkNueS9WQUQ5c2tLUVdpTGh3cmhsQkF2Q2IyaDlVc0lmQ1BMZFZVa0ExdHRZSWRnUXlLMVF5d2dBWUFqL2xpZjhrZERmL2Z1NlJBQ2Q3YUlZakFpMkhBZ0FRUGoxdXoyTzhJZUNmMW1QRkFDUGh2dUVJSGdRY0ZFTUFQRURicGErWHdxL0d2eEhHNlVENkpZZGdobUJBcUFsQkF0bWYwUGY3d2wvTFBqL1hKY0lvTE9kQkNFZEFhdEFrd0JLemY2MjhBK0QvMHVuSkFEZDdVUUlWZ1NzQWdEb1ByY25aL1ozaFQ4US9JdjZxQUQ0T054bkNDRVhnVzBWYU9HNVF3dG0vOTdzYnduL2V6MzgvZEIzU3dYUXJUNEVDY0Y3SndKV2dma0Q2RCsxcmVUc254SitONEFNQkttclFFdFBuMXN3KzIvMi9zWENId2p5ei8vK2NWRVNnUFUyRW9Sc0JGd0x0QUVnT3Z1L0tUbjc2K0ZmaDlvRElBb2hocURFS3ZDbXZWVmdRZnNqMy9reHpmNk84SHNCMkJBWVZ3SEhIU0VBekNIOHA0VXZmcDJ6L3lETS8xMldDR0MxallpZzlDcGd1QnMwVndTTFZ0c2ZOd0RuN0I4THZ4bUFHMEY4RlNoeE53Z0FEZmIvcnRuZkVQNDdxNUlBckxleEluQ3ZBbHdIekI5QTZPdUp6UDIvMXY1NFovOXUrRDlkbGdoZ3RVME1nV1VWc0xSQktkY0JjMFFBQU1mdFQwdjdvNFgvenFjOUJjQ2VIWUhXQm1YZURnWEFCR3NuOGdWMVpmdC9ZL3N6QUxCbkJMRG5XZ1VzYlZES2RVQUl3TnkreDdnSkFPVXZnQTN0VDJUMnYvTlpBZkI1VDEwRjFEWm9qQXRoQUxRRlFMMEFkZ1BZY3dMWUt3cEF2UkFHd0F6Qy8rcnByUUpRMjUrdjRmNUpBYkQ4OTQxVklPVTZZR1FBeS9NTUFBQUFBQUFBQUFBQUFORFlOUUFBcWd6L1FWRUEzQVdTQVN6UE53QW1Bb0RmQTVUOVBRQUE1Z2FBM3dRRFlEWUFYajNsczBBamZoWm9mWTRCVURHQUhRa0Fud1pOL2pUb0RnQXFEZi9Kd1FyQWdSa0Fmdy9nLzN1QWJ2dHpVU2NIQUtnYUFIOFJOdG9kSUFCVVZQZFBEam9JMGkrRStadGcrd1h3OG56ZkI4QkVBZkJVQ0hmL0Q0QXBBVWk5RHVDNVFPWUxZQUJVQ3lDMURlTEpjT2JaSHdEMUFVaHRnM2cyYUhyN0E0Q2FBU1RkRGVMcDBQTGRId0RVQ2VENElLME40dnNCL0xOL0Y4QXhBS29DVUtZTjRodGlyTzBQQUdvSE1OSXEwTUozaEZuYUh3RFVCR0NNVmFEUmI0bTB6djRBbUFLQUFxMVFTOThUN0puOUFWQWJnSnlMWWI0cDNuWHhDNENLQWVTdUF1cjFnQlZCQklJRXdCcDhlL2dEZlgraDJSOEFsZFNEdnc2TEk5aUtJSkRhSVJGQ0I0UUtRRGxHNkhYRGJjOTErTGRHQ1AveXZBTmdFZ0RrVnNoN1VheXRCaG9FRVVCaThLUGh0L2I5bHRZSEFQVUNLTG9LUkZjQ2Uwc2tZZkFBa0k0cnRqekt6RjlpOWdmQXBBQ01nOEFEWVYwU0FNdisxbGsvTy93QW1CYUFwRmJJaUNEYUVvVldBd1ZERW9EQThUZURIMmw1ak9IM3RqNEFtTUlxa05BSytSQW9xMEVFZ3huQXVSRDgwS3p2RFg5QzZ6T24yWCtXQU1SVm9DU0NHQVFEQmhHQU9mVEQ0SmNNZnd1ei83d0F2RHowdDBKZUJJa1EraUFzQVByNzVnVGZGWDVqNjdNODN3Q1lDb0FNQk5wcVlJTFFReUVCR0liZEVYekxySjhZZmdCTUFVQXBCQW1yUVJ6Q0VJUUlJQlo0Wi9DbFdiOUUrQUV3UlFRbkl5Q1FJRVJBeUFEQ2dmY0VQenY4SjIyRXZ3a0FwUkY0SU1SQWlBQzB3SHVEWHpMOEFLaTdkbDhlRmtPUUJVSEFzSzBBMkU0SXZUbjRoY0svQzRCS0FmeDVXQTZCY1RWUUlRUkFtQUVZamh0N1QvRlpQei84eS9NTWdEa2l5RmdOUEJoRUFEbWhkOHo2aEgvbUFNd0lqZzBJUXF1QkFrSENrQUpBZTYzK2U1Tm1mZlBkbm43NEFUQUZBRWRaQ0lZdGtiSWFHREYwU3dMZ09VN29mVVJuZmFYbHNZWi9lWDRCTUlWVm9OOEtwU0FRVm9NY0NOa0FUTUczdHp4UytCOXNoUDl3ZGxtWktZQ2pEUVN1bFNBQlFoVERhU0VBcDByb000SnZuL25uTi92UEZrQnBCR0piNU1Hd0toR0FzbTg4OUVxN1EvZ2JBL0RpeUlYQXRSbzRNSVJRV0FHRWpxT0ZQbm5XVjhLL1BKOEFtQnFBS3dSSDZkY0Ywb293Z0JEQUVJQWhBWWdIUFJMNldLc1RDYjZuMzc4NmR5OEEwQlNDSkFoQkRHRVVJZ0F0N05wczd3bCs0K0dmUFlDSFgzOXdEd1VFSlNFTU1BZ2daQUI2NElPaHp3MStKUHpyY3dpQWhoR0lFQ0lZZ2lCV0pRS0k3SFBmR2ZwbzhBbC9td0NHQ0VhQUlHRG9sZ1RBc3IvMkhyS0Mzd3MvQU9hSUlMUWFoSzROY2lBSUtGd0FISzlqQ2Y2dzF4LzIrNjJFdngwQXo0OHVLM1UxRUNDNE1Sd3JBSTRMaFQ0V2ZPT3N2ejVuQUpnN0FtRTE4RUt3Z3NnQllIbDlQZmp5ck45SytKc0NzSUhBdWhwSUVJd1lRamcwQUNuSERiMC9NZmpDck45SytDOEFqRDJxQmFDdUJtRUlKVEJJQUlxRlhnbStGUDZhQUN5bVBxcGVCVklnV0RBb0tKSUFDSzhURDcwLytMWE4vZ0M0QlFSeENCa1lPaVVDTUI3REhQcFk4Q2NRZmdDTVZMOC9mM1pSTGdnV0REMFF1NFVBN0txQmo0ZmVHdnoxT1FGQUF3QzZDS3dRa2pCRVVFZ0FiR0ZQQ0wwUy9CckRENEFiUkJDRmtJUkJSaUVDc0lZOUkvVDk0TmNhL2xrQW1Cb0NMNFFCQmhIRVpja0FsUDFmR0VMdkNEN2hCMEMwb2hBRURGRVVuUklCQ1B0cHJ5bTlYK24vQ1lDR0FXZ0lWQWhHRU4yU0FIaU9ZM2xmMnYrdDZWOVNnY0NPd0lWQlFaRUV3UEc2MXY4TDRRZEFFb0lrREowU0FTUWUwL3ZlbS8rSUFnaktJRWhCa1FzZzl6MFNmaENNaWtDRFlRVXd4dnNnL0NDNE5RVHJrZ0NNK2JxRUh3UlZJTGdOQUlRZkJOVkF1RWtBZkNZZkJOVWh1Q2tBaEI4SVZTSzRDUUFFSHd6VlFoZ1RBS0VIUnZVSXhnSkEwQUV3Q1FpbEFURFRBMkJTQ0VvQ29OVUJ3T1FnbEFCQXJ3K0F5VUxJQWNDdFRRQjhtVHFFRkFBOGJJb3gyYWZZNVFEZ2FXdU15UVBvWTlBQThMaEJ4bXdCZEtzYmZKNjN5V2dPQUErY1pRQUFBQXdBQUlBQkFBQXdBQUFBQmdBQXdBQUFBQmdBQUFBREFBQmdBQUFBRE1JRkFBQlFBQUFBQlFBQVVBQUFBQVdBblBFL05LVDhhbkV3ODFzQUFBQUFTVVZPUks1Q1lJST0iLCAic2l6ZXMiOiAiNTEyeDUxMiIsICJ0eXBlIjogImltYWdlL3BuZyJ9XX0=">
+<meta name="theme-color" content="#131720">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #131720;
+    --surface:  #1c2130;
+    --card:     #202840;
+    --border:   #2a3350;
+    --accent:   #7eb8a4;
+    --warm:     #c4a882;
+    --mist:     #8fa8c0;
+    --red:      #c47a7a;
+    --text:     #d8dce8;
+    --dim:      #5a6480;
+    --white:    #eceef5;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  /* Atmospheric background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 40% at 20% 10%, rgba(126,184,164,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(143,168,192,0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .app { position: relative; z-index: 1; max-width: 430px; margin: 0 auto; padding: 0 0 100px; }
+
+  /* ── Header ── */
+  header {
+    padding: 52px 24px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+  .app-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+  .app-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .week-badge {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: var(--dim);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+  .date-line {
+    font-size: 12px;
+    color: var(--dim);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── Day Nav ── */
+  .day-nav {
+    display: flex;
+    gap: 6px;
+    padding: 16px 24px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .day-nav::-webkit-scrollbar { display: none; }
+  .day-pill {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 46px;
+  }
+  .day-pill.active {
+    background: var(--card);
+    border-color: var(--accent);
+  }
+  .day-pill:not(.active):hover { background: var(--surface); }
+  .day-pill .day-letter {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--dim);
+    text-transform: uppercase;
+  }
+  .day-pill.active .day-letter { color: var(--accent); }
+  .day-pill .day-num {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .day-pill.active .day-num { color: var(--white); }
+  .day-pill .day-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background 0.2s;
+  }
+  .day-pill.done .day-dot { background: var(--accent); }
+  .day-pill.partial .day-dot { background: var(--warm); }
+
+  /* ── Content ── */
+  .content { padding: 20px 16px; }
+
+  /* ── Day Header ── */
+  .day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 0 4px;
+  }
+  .day-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .day-tag {
+    font-size: 11px;
+    color: var(--dim);
+    letter-spacing: 0.04em;
+  }
+  .progress-ring-wrap { display: flex; align-items: center; gap: 8px; }
+  .progress-pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ── Mood ── */
+  .mood-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .mood-label {
+    font-size: 11px;
+    color: var(--dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .mood-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .mood-row label { flex: 1; cursor: pointer; }
+  .mood-row input { display: none; }
+  .mood-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 6px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    transition: all 0.15s;
+    text-align: center;
+  }
+  .mood-row input:checked + .mood-btn {
+    border-color: var(--accent);
+    background: rgba(126,184,164,0.12);
+  }
+  .mood-emoji { font-size: 20px; }
+  .mood-text { font-size: 9px; color: var(--dim); letter-spacing: 0.03em; }
+
+  .energy-row { display: flex; gap: 6px; align-items: center; }
+  .energy-label { font-size: 11px; color: var(--dim); width: 60px; }
+  .energy-dots { display: flex; gap: 6px; flex: 1; }
+  .energy-dot-wrap { flex: 1; cursor: pointer; }
+  .energy-dot-wrap input { display: none; }
+  .e-dot {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border);
+    transition: all 0.15s;
+  }
+  .energy-dot-wrap:nth-child(1) input:checked ~ * { display: none; }
+  .energy-dot-wrap input:checked + .e-dot { background: var(--accent); }
+
+  /* filled dots effect */
+  .energy-dots.level-1 .energy-dot-wrap:nth-child(1) .e-dot { background: var(--accent); }
+  .energy-dots.level-2 .energy-dot-wrap:nth-child(-n+2) .e-dot { background: var(--accent); }
+  .energy-dots.level-3 .energy-dot-wrap:nth-child(-n+3) .e-dot { background: var(--accent); }
+  .energy-dots.level-4 .energy-dot-wrap:nth-child(-n+4) .e-dot { background: var(--warm); }
+  .energy-dots.level-5 .energy-dot-wrap:nth-child(-n+5) .e-dot { background: var(--warm); }
+
+  /* ── Activities ── */
+  .section-label {
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0 4px;
+    margin-bottom: 8px;
+  }
+
+  .activity-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+
+  .activity-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .activity-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--border);
+    transition: background 0.2s;
+    border-radius: 14px 0 0 14px;
+  }
+  .activity-item.checked { background: rgba(126,184,164,0.06); border-color: rgba(126,184,164,0.3); }
+  .activity-item.checked::before { background: var(--accent); }
+
+  .activity-emoji { font-size: 18px; flex-shrink: 0; width: 24px; text-align: center; }
+
+  .activity-info { flex: 1; }
+  .activity-name {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .activity-item.checked .activity-name { color: var(--accent); }
+  .activity-detail {
+    font-size: 11px;
+    color: var(--dim);
+    letter-spacing: 0.02em;
+  }
+
+  .check-circle {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .activity-item.checked .check-circle {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .check-icon {
+    opacity: 0;
+    transition: opacity 0.2s;
+    color: var(--bg);
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .activity-item.checked .check-icon { opacity: 1; }
+
+  /* ── Bottom Nav ── */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(19,23,32,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    display: flex;
+    z-index: 100;
+    max-width: 430px;
+    margin: 0 auto;
+  }
+  .nav-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 12px 0 16px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: var(--dim);
+    font-family: 'DM Sans', sans-serif;
+    transition: color 0.2s;
+  }
+  .nav-btn.active { color: var(--accent); }
+  .nav-icon { font-size: 20px; }
+  .nav-text { font-size: 9px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* ── Stats view ── */
+  .stats-view { display: none; padding: 20px 16px; }
+  .stats-view.visible { display: block; }
+  .main-view.hidden { display: none; }
+
+  .stat-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 20px;
+    padding: 0 4px;
+  }
+
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .week-cell {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+  }
+  .week-cell .wc-day { font-size: 8px; color: var(--dim); text-transform: uppercase; }
+  .week-cell .wc-pct { font-size: 11px; font-weight: 500; color: var(--text); }
+  .week-cell.wc-good { border-color: rgba(126,184,164,0.4); background: rgba(126,184,164,0.08); }
+  .week-cell.wc-good .wc-pct { color: var(--accent); }
+  .week-cell.wc-med { border-color: rgba(196,168,130,0.4); background: rgba(196,168,130,0.08); }
+  .week-cell.wc-med .wc-pct { color: var(--warm); }
+
+  .stat-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+  }
+  .stat-card-label { font-size: 10px; color: var(--dim); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px; }
+  .stat-card-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--white);
+    font-weight: 600;
+    line-height: 1;
+  }
+  .stat-card-sub { font-size: 10px; color: var(--dim); margin-top: 4px; }
+
+  .reset-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--dim);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .reset-btn:hover { border-color: var(--red); color: var(--red); }
+
+  /* Animation */
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .content, .stats-view { animation: fadeSlide 0.25s ease; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header>
+    <div class="header-top">
+      <div>
+        <div class="app-title">Ma <em>Routine</em></div>
+        <div class="date-line" id="headerDate"></div>
+      </div>
+      <div class="week-badge" id="weekBadge"></div>
+    </div>
+  </header>
+
+  <div class="day-nav" id="dayNav"></div>
+
+  <!-- Main view -->
+  <div class="main-view" id="mainView">
+    <div class="content">
+      <div class="day-header">
+        <div>
+          <div class="day-name" id="currentDayName"></div>
+          <div class="day-tag" id="currentDayTag"></div>
+        </div>
+        <div class="progress-ring-wrap">
+          <div class="progress-pct" id="progressPct">0%</div>
+        </div>
+      </div>
+
+      <!-- Mood -->
+      <div class="mood-card">
+        <div class="mood-label">Humeur du jour</div>
+        <div class="mood-row" id="moodRow">
+          <label><input type="radio" name="mood" value="1"><div class="mood-btn"><span class="mood-emoji">😶‍🌫️</span><span class="mood-text">Difficile</span></div></label>
+          <label><input type="radio" name="mood" value="2"><div class="mood-btn"><span class="mood-emoji">😔</span><span class="mood-text">Moyen</span></div></label>
+          <label><input type="radio" name="mood" value="3"><div class="mood-btn"><span class="mood-emoji">😌</span><span class="mood-text">OK</span></div></label>
+          <label><input type="radio" name="mood" value="4"><div class="mood-btn"><span class="mood-emoji">🌿</span><span class="mood-text">Bien</span></div></label>
+          <label><input type="radio" name="mood" value="5"><div class="mood-btn"><span class="mood-emoji">✨</span><span class="mood-text">Très bien</span></div></label>
+        </div>
+        <div class="energy-row">
+          <div class="energy-label">Énergie</div>
+          <div class="energy-dots" id="energyDots">
+            <div class="energy-dot-wrap" data-level="1"><div class="e-dot"></div></div>
+            <div class="energy-dot-wrap" data-level="2"><div class="e-dot"></div></div>
+            <div class="energy-dot-wrap" data-level="3"><div class="e-dot"></div></div>
+            <div class="energy-dot-wrap" data-level="4"><div class="e-dot"></div></div>
+            <div class="energy-dot-wrap" data-level="5"><div class="e-dot"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activities -->
+      <div class="section-label">Activités</div>
+      <div class="activity-list" id="activityList"></div>
+    </div>
+  </div>
+
+  <!-- Stats view -->
+  <div class="stats-view" id="statsView">
+    <div class="stat-title">Cette semaine</div>
+    <div class="week-grid" id="weekGrid"></div>
+    <div class="stat-cards" id="statCards"></div>
+    <button class="reset-btn" id="resetBtn">↺ Réinitialiser la semaine</button>
+  </div>
+
+  <!-- Bottom nav -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" id="navToday" onclick="showView('main')">
+      <span class="nav-icon">🌿</span>
+      <span class="nav-text">Aujourd'hui</span>
+    </button>
+    <button class="nav-btn" id="navStats" onclick="showView('stats')">
+      <span class="nav-icon">📊</span>
+      <span class="nav-text">Semaine</span>
+    </button>
+  </nav>
+
+</div>
+
+<script>
+// ── Data ─────────────────────────────────────────────────────────────────────
+const DAYS_DATA = [
+  {
+    name: "Lundi",
+    short: "Lu",
+    tag: "Activation douce",
+    activities: [
+      { emoji: "🌬", name: "Cohérence cardiaque", detail: "5 min · au réveil" },
+      { emoji: "🚶", name: "Marche extérieure", detail: "30 min · allure tranquille" },
+      { emoji: "🧘", name: "Yin yoga", detail: "20–30 min · soir" },
+      { emoji: "🌙", name: "Body scan audio", detail: "10 min · coucher" },
+    ]
+  },
+  {
+    name: "Mardi",
+    short: "Ma",
+    tag: "Muscu coach + récup",
+    activities: [
+      { emoji: "💪", name: "Séance muscu coach", detail: "7h30 · ~1h" },
+      { emoji: "🚶", name: "Marche légère", detail: "20–30 min · journée" },
+      { emoji: "🧘", name: "Étirements doux", detail: "15–20 min · soir" },
+      { emoji: "🌬", name: "Cohérence cardiaque", detail: "5 min · coucher" },
+    ]
+  },
+  {
+    name: "Mercredi",
+    short: "Me",
+    tag: "Cardio doux prioritaire",
+    activities: [
+      { emoji: "🌬", name: "Cohérence cardiaque", detail: "5 min · matin" },
+      { emoji: "🚶", name: "Marche active", detail: "40–45 min · allure soutenue" },
+      { emoji: "🌿", name: "Qi gong ou sophrologie", detail: "20 min · soir" },
+      { emoji: "🌙", name: "Body scan audio", detail: "10 min · coucher" },
+    ]
+  },
+  {
+    name: "Jeudi",
+    short: "Je",
+    tag: "Muscu seule + décompression",
+    activities: [
+      { emoji: "🌬", name: "Cohérence cardiaque", detail: "5 min · matin" },
+      { emoji: "💪", name: "Séance muscu seule", detail: "45–60 min · journée/soir" },
+      { emoji: "🚶", name: "Marche décompression", detail: "10–15 min · post-séance" },
+      { emoji: "🧘", name: "Étirements doux", detail: "10 min · coucher" },
+    ]
+  },
+  {
+    name: "Vendredi",
+    short: "Ve",
+    tag: "Cardio doux + système nerveux",
+    activities: [
+      { emoji: "🌬", name: "Cohérence cardiaque", detail: "5 min · matin" },
+      { emoji: "🚶", name: "Marche active", detail: "40–45 min · journée" },
+      { emoji: "🧘", name: "Yin yoga long", detail: "30–45 min · soir" },
+      { emoji: "🌙", name: "Body scan audio", detail: "10 min · coucher" },
+    ]
+  },
+  {
+    name: "Samedi",
+    short: "Sa",
+    tag: "Sortie nature",
+    activities: [
+      { emoji: "🌬", name: "Cohérence cardiaque", detail: "5 min · matin" },
+      { emoji: "🌲", name: "Marche nature", detail: "45–60 min · Vercors / forêt" },
+      { emoji: "✨", name: "Activité libre", detail: "yoga, jardin, créatif…" },
+      { emoji: "🌙", name: "Body scan si envie", detail: "10 min · coucher" },
+    ]
+  },
+  {
+    name: "Dimanche",
+    short: "Di",
+    tag: "Repos actif minimal",
+    activities: [
+      { emoji: "🌬", name: "Cohérence cardiaque", detail: "5 min · si envie" },
+      { emoji: "🚶", name: "Marche courte tranquille", detail: "20 min · sans pression" },
+      { emoji: "✨", name: "Repos musculaire complet", detail: "jardiner, créer, se poser" },
+      { emoji: "🌙", name: "Étirements ou rien", detail: "libre" },
+    ]
+  }
+];
+
+// ── State ─────────────────────────────────────────────────────────────────────
+function getWeekKey() {
+  const now = new Date();
+  const jan1 = new Date(now.getFullYear(), 0, 1);
+  const week = Math.ceil(((now - jan1) / 86400000 + jan1.getDay() + 1) / 7);
+  return `${now.getFullYear()}-W${week}`;
+}
+
+function loadState() {
+  const key = getWeekKey();
+  const raw = localStorage.getItem('routine_' + key);
+  if (raw) return JSON.parse(raw);
+  // Default empty state for 7 days
+  return DAYS_DATA.map(() => ({
+    checked: [],
+    mood: null,
+    energy: null
+  }));
+}
+
+function saveState() {
+  localStorage.setItem('routine_' + getWeekKey(), JSON.stringify(state));
+}
+
+let state = loadState();
+let currentDay = (new Date().getDay() + 6) % 7; // 0=Mon, 6=Sun
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function getDayProgress(dayIdx) {
+  const checked = state[dayIdx].checked.length;
+  const total = DAYS_DATA[dayIdx].activities.length;
+  return total > 0 ? Math.round((checked / total) * 100) : 0;
+}
+
+function renderDayNav() {
+  const nav = document.getElementById('dayNav');
+  nav.innerHTML = '';
+  const today = (new Date().getDay() + 6) % 7;
+
+  DAYS_DATA.forEach((day, i) => {
+    const pct = getDayProgress(i);
+    const pill = document.createElement('div');
+    pill.className = 'day-pill' + (i === currentDay ? ' active' : '') +
+                     (pct === 100 ? ' done' : pct > 0 ? ' partial' : '');
+
+    // Get day number for this week
+    const now = new Date();
+    const diff = i - today;
+    const d = new Date(now);
+    d.setDate(d.getDate() + diff);
+
+    pill.innerHTML = `
+      <span class="day-letter">${day.short}</span>
+      <span class="day-num">${d.getDate()}</span>
+      <div class="day-dot"></div>
+    `;
+    pill.addEventListener('click', () => { currentDay = i; renderAll(); });
+    nav.appendChild(pill);
+  });
+}
+
+function renderMainView() {
+  const day = DAYS_DATA[currentDay];
+  const s = state[currentDay];
+
+  document.getElementById('currentDayName').textContent = day.name;
+  document.getElementById('currentDayTag').textContent = day.tag;
+
+  const pct = getDayProgress(currentDay);
+  document.getElementById('progressPct').textContent = pct + '%';
+
+  // Mood
+  document.querySelectorAll('input[name="mood"]').forEach(inp => {
+    inp.checked = (parseInt(inp.value) === s.mood);
+    inp.addEventListener('change', () => {
+      state[currentDay].mood = parseInt(inp.value);
+      saveState();
+    });
+  });
+
+  // Energy dots
+  const energyDots = document.getElementById('energyDots');
+  energyDots.className = 'energy-dots' + (s.energy ? ` level-${s.energy}` : '');
+  energyDots.querySelectorAll('.energy-dot-wrap').forEach(dot => {
+    dot.onclick = () => {
+      const level = parseInt(dot.dataset.level);
+      state[currentDay].energy = (state[currentDay].energy === level) ? null : level;
+      saveState();
+      energyDots.className = 'energy-dots' + (state[currentDay].energy ? ` level-${state[currentDay].energy}` : '');
+    };
+  });
+
+  // Activities
+  const list = document.getElementById('activityList');
+  list.innerHTML = '';
+  day.activities.forEach((act, i) => {
+    const isChecked = s.checked.includes(i);
+    const item = document.createElement('div');
+    item.className = 'activity-item' + (isChecked ? ' checked' : '');
+    item.innerHTML = `
+      <span class="activity-emoji">${act.emoji}</span>
+      <div class="activity-info">
+        <div class="activity-name">${act.name}</div>
+        <div class="activity-detail">${act.detail}</div>
+      </div>
+      <div class="check-circle"><span class="check-icon">✓</span></div>
+    `;
+    item.addEventListener('click', () => {
+      const idx = state[currentDay].checked.indexOf(i);
+      if (idx > -1) state[currentDay].checked.splice(idx, 1);
+      else state[currentDay].checked.push(i);
+      saveState();
+      renderAll();
+    });
+    list.appendChild(item);
+  });
+}
+
+function renderStats() {
+  // Week grid
+  const grid = document.getElementById('weekGrid');
+  grid.innerHTML = '';
+  DAYS_DATA.forEach((day, i) => {
+    const pct = getDayProgress(i);
+    const cell = document.createElement('div');
+    cell.className = 'week-cell' + (pct === 100 ? ' wc-good' : pct >= 50 ? ' wc-med' : '');
+    cell.innerHTML = `<span class="wc-day">${day.short}</span><span class="wc-pct">${pct > 0 ? pct + '%' : '—'}</span>`;
+    grid.appendChild(cell);
+  });
+
+  // Stat cards
+  const totalActs = state.reduce((sum, d) => sum + d.checked.length, 0);
+  const daysActive = state.filter(d => d.checked.length > 0).length;
+  const avgMood = (() => {
+    const moods = state.map(d => d.mood).filter(Boolean);
+    if (!moods.length) return null;
+    return (moods.reduce((a, b) => a + b, 0) / moods.length).toFixed(1);
+  })();
+  const moodEmojis = ['😶‍🌫️','😔','😌','🌿','✨'];
+
+  document.getElementById('statCards').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-card-label">Activités cochées</div>
+      <div class="stat-card-value">${totalActs}</div>
+      <div class="stat-card-sub">cette semaine</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">Jours actifs</div>
+      <div class="stat-card-value">${daysActive}</div>
+      <div class="stat-card-sub">sur 7 jours</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">Humeur moyenne</div>
+      <div class="stat-card-value">${avgMood ? moodEmojis[Math.round(avgMood)-1] : '—'}</div>
+      <div class="stat-card-sub">${avgMood ? avgMood + '/5' : 'pas encore renseignée'}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">Complétion moy.</div>
+      <div class="stat-card-value">${daysActive > 0 ? Math.round(state.filter(d=>d.checked.length>0).reduce((s,d,i)=>s+getDayProgress(DAYS_DATA.indexOf(DAYS_DATA[state.indexOf(d)])),0)/daysActive) : 0}%</div>
+      <div class="stat-card-sub">jours actifs</div>
+    </div>
+  `;
+}
+
+function renderHeader() {
+  const now = new Date();
+  const opts = { weekday: 'long', day: 'numeric', month: 'long' };
+  document.getElementById('headerDate').textContent =
+    now.toLocaleDateString('fr-FR', opts);
+  document.getElementById('weekBadge').textContent =
+    'Semaine ' + (() => {
+      const jan1 = new Date(now.getFullYear(), 0, 1);
+      return Math.ceil(((now - jan1) / 86400000 + jan1.getDay() + 1) / 7);
+    })();
+}
+
+function renderAll() {
+  renderHeader();
+  renderDayNav();
+  renderMainView();
+  renderStats();
+}
+
+// ── View toggle ───────────────────────────────────────────────────────────────
+function showView(view) {
+  const main = document.getElementById('mainView');
+  const stats = document.getElementById('statsView');
+  const navToday = document.getElementById('navToday');
+  const navStats = document.getElementById('navStats');
+
+  if (view === 'main') {
+    main.classList.remove('hidden');
+    stats.classList.remove('visible');
+    navToday.classList.add('active');
+    navStats.classList.remove('active');
+  } else {
+    main.classList.add('hidden');
+    stats.classList.add('visible');
+    navToday.classList.remove('active');
+    navStats.classList.add('active');
+    renderStats();
+  }
+}
+
+// Reset
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (confirm('Réinitialiser toutes les données de cette semaine ?')) {
+    state = DAYS_DATA.map(() => ({ checked: [], mood: null, energy: null }));
+    saveState();
+    renderAll();
+  }
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+renderAll();
+</script>
+</body>
+</html>
