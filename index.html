@@ -219,11 +219,11 @@
   .energy-row { display: flex; gap: 6px; align-items: center; }
   .energy-label { font-size: 11px; color: var(--dim); width: 60px; }
   .energy-dots { display: flex; gap: 6px; flex: 1; }
-  .energy-dot-wrap { flex: 1; cursor: pointer; }
+  .energy-dot-wrap { flex: 1; cursor: pointer; padding: 10px 0; margin: -10px 0; }
   .energy-dot-wrap input { display: none; }
   .e-dot {
-    height: 6px;
-    border-radius: 3px;
+    height: 14px;
+    border-radius: 7px;
     background: var(--border);
     transition: all 0.15s;
   }
@@ -415,6 +415,128 @@
   }
   .reset-btn:hover { border-color: var(--red); color: var(--red); }
 
+  /* ── Hydration ── */
+  .hydro-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .hydro-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .hydro-label { font-size: 11px; color: var(--dim); letter-spacing: 0.06em; text-transform: uppercase; }
+  .hydro-count {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .hydro-glasses { display: flex; gap: 7px; flex-wrap: wrap; }
+  .glass-btn {
+    width: 36px; height: 44px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: var(--card);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    transition: all 0.15s;
+    position: relative;
+  }
+  .glass-btn.filled { border-color: var(--accent); background: rgba(126,184,164,0.18); }
+  .glass-btn.filled::after {
+    content: '';
+    position: absolute; bottom: 4px; left: 4px; right: 4px;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--accent);
+    opacity: 0.6;
+  }
+  .hydro-goal { font-size: 10px; color: var(--dim); margin-top: 8px; text-align: right; }
+
+  /* ── Journal ── */
+  .journal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .journal-question {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--warm);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .journal-textarea {
+    width: 100%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    resize: none;
+    min-height: 80px;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+  .journal-textarea:focus { border-color: var(--warm); }
+  .journal-textarea::placeholder { color: var(--dim); }
+  .journal-save {
+    margin-top: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--warm);
+    background: transparent;
+    color: var(--warm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.15s;
+    float: right;
+  }
+  .journal-save:active { background: rgba(196,168,130,0.15); }
+  .journal-saved-note { font-size: 10px; color: var(--dim); margin-top: 6px; font-style: italic; }
+
+  /* ── Monthly view ── */
+  .monthly-view { display: none; padding: 20px 16px; }
+  .monthly-view.visible { display: block; }
+  .month-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .month-nav-btn {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 6px 14px; color: var(--text);
+    font-size: 18px; cursor: pointer;
+  }
+  .month-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: var(--white); font-weight: 600;
+  }
+  .month-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    gap: 4px; margin-bottom: 20px;
+  }
+  .month-day-label { font-size: 9px; color: var(--dim); text-align: center; padding: 4px 0; text-transform: uppercase; }
+  .month-cell {
+    aspect-ratio: 1; border-radius: 8px;
+    background: var(--surface); border: 1px solid transparent;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: var(--dim); cursor: default;
+    position: relative;
+  }
+  .month-cell.today { border-color: var(--accent); color: var(--accent); }
+  .month-cell.mc-good { background: rgba(126,184,164,0.2); color: var(--accent); font-weight: 500; }
+  .month-cell.mc-med { background: rgba(196,168,130,0.15); color: var(--warm); }
+  .month-cell.mc-low { background: rgba(90,100,128,0.15); }
+  .month-cell.empty { background: transparent; }
+  .month-stat-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+
   /* Animation */
   @keyframes fadeSlide {
     from { opacity: 0; transform: translateY(8px); }
@@ -506,6 +628,26 @@
       <!-- Activities -->
       <div class="section-label">Activités</div>
       <div class="activity-list" id="activityList"></div>
+
+      <!-- Hydration -->
+      <div class="section-label" style="margin-top:6px;">Hydratation</div>
+      <div class="hydro-card">
+        <div class="hydro-header">
+          <div class="hydro-label">Verres d'eau</div>
+          <div class="hydro-count"><span id="hydroCount">0</span> / 8</div>
+        </div>
+        <div class="hydro-glasses" id="hydroGlasses"></div>
+        <div class="hydro-goal">Objectif : 8 verres · ~2L par jour</div>
+      </div>
+
+      <!-- Journal -->
+      <div class="section-label">Réflexion du jour</div>
+      <div class="journal-card">
+        <div class="journal-question" id="journalQuestion"></div>
+        <textarea class="journal-textarea" id="journalText" placeholder="Quelques mots…" rows="3"></textarea>
+        <button class="journal-save" id="journalSaveBtn">Enregistrer</button>
+        <div class="journal-saved-note" id="journalSavedNote"></div>
+      </div>
     </div>
   </div>
 
@@ -517,6 +659,17 @@
     <button class="reset-btn" id="resetBtn">↺ Réinitialiser la semaine</button>
   </div>
 
+  <!-- Monthly view -->
+  <div class="monthly-view" id="monthlyView">
+    <div class="month-nav">
+      <button class="month-nav-btn" id="prevMonth">‹</button>
+      <div class="month-title" id="monthTitle"></div>
+      <button class="month-nav-btn" id="nextMonth">›</button>
+    </div>
+    <div class="month-grid" id="monthGrid"></div>
+    <div class="month-stat-cards" id="monthStatCards"></div>
+  </div>
+
   <!-- Bottom nav -->
   <nav class="bottom-nav">
     <button class="nav-btn active" id="navToday" onclick="showView('main')">
@@ -526,6 +679,10 @@
     <button class="nav-btn" id="navStats" onclick="showView('stats')">
       <span class="nav-icon">📊</span>
       <span class="nav-text">Semaine</span>
+    </button>
+    <button class="nav-btn" id="navMonthly" onclick="showView('monthly')">
+      <span class="nav-icon">📅</span>
+      <span class="nav-text">Mois</span>
     </button>
   </nav>
 
@@ -629,7 +786,9 @@ function loadState() {
   return DAYS_DATA.map(() => ({
     checked: [],
     mood: null,
-    energy: null
+    energy: null,
+    hydro: 0,
+    journal: ''
   }));
 }
 
@@ -789,38 +948,259 @@ function renderHeader() {
     })();
 }
 
+
+// ── Journal Questions ─────────────────────────────────────────────────────────
+const JOURNAL_QUESTIONS = [
+  "Qu'est-ce qui t'a demandé le plus d'énergie aujourd'hui ?",
+  "Quel moment de la journée t'a semblé le plus léger ?",
+  "As-tu pris soin de ton corps aujourd'hui ? De quelle façon ?",
+  "Qu'est-ce que tu aurais aimé faire différemment ?",
+  "Quelle émotion a dominé ta journée ? D'où venait-elle ?",
+  "Qu'est-ce qui t'a fait sourire aujourd'hui, même brièvement ?",
+  "As-tu ressenti de la tension dans ton corps ? Où ?",
+  "Qu'est-ce que tu t'es permis aujourd'hui que tu t'accordes rarement ?",
+  "Y a-t-il quelque chose que tu portes depuis plusieurs jours ?",
+  "Qu'est-ce qui t'a semblé facile aujourd'hui ?",
+  "Comment était ton niveau d'énergie au fil de la journée ?",
+  "Qu'est-ce qui t'a nourrie aujourd'hui — pas forcément la nourriture ?",
+  "As-tu eu un moment de calme ? Comment était-il ?",
+  "Qu'est-ce que tu aurais eu besoin d'entendre aujourd'hui ?",
+  "Y a-t-il quelque chose que tu remets à plus tard depuis trop longtemps ?",
+  "Comment ton corps a-t-il répondu à ta routine aujourd'hui ?",
+  "Qu'est-ce qui t'a pesé aujourd'hui, et est-ce vraiment de ta responsabilité ?",
+  "Quel geste de soin as-tu posé pour toi aujourd'hui ?",
+  "Qu'est-ce que tu remarques dans ton humeur ces derniers jours ?",
+  "Y a-t-il quelque chose que tu as évité de ressentir ?",
+  "Qu'est-ce qui te semble encore flou ou en suspens en ce moment ?",
+  "As-tu respecté tes limites aujourd'hui ?",
+  "Qu'est-ce que tu ferais demain différemment ?",
+  "Quel besoin fondamental (repos, mouvement, lien, silence) as-tu satisfait aujourd'hui ?",
+  "Comment te sens-tu dans ton corps en ce moment, juste là ?",
+  "Y a-t-il une pensée qui revient souvent en ce moment ?",
+  "Qu'est-ce qui t'a donné envie d'avancer aujourd'hui ?",
+  "As-tu été douce avec toi-même aujourd'hui ?",
+  "Qu'est-ce qui t'a semblé lourd, et qu'est-ce qui t'a semblé léger ?",
+  "Si ton corps pouvait parler ce soir, que dirait-il ?",
+  "Quelle est la chose dont tu es la plus fière aujourd'hui, même petite ?",
+  "Y a-t-il une relation ou interaction qui t'a marquée aujourd'hui ?",
+  "Qu'est-ce que tu as appris sur toi-même aujourd'hui ?",
+  "Comment était ta relation à la nourriture aujourd'hui — sans jugement ?",
+  "Y a-t-il un moment où tu as senti ton cortisol monter ? Qu'est-ce qui l'a déclenché ?",
+  "Qu'est-ce qui te manque en ce moment ?",
+  "As-tu passé du temps dans quelque chose qui te ressemble ?",
+  "Quel mot décrirait le mieux ta journée d'aujourd'hui ?",
+  "Qu'est-ce qui t'a ancré·e aujourd'hui ?",
+  "De quoi as-tu besoin pour bien dormir ce soir ?",
+  "Y a-t-il quelque chose que tu veux relâcher avant de dormir ?",
+  "Qu'est-ce que tu te dirais si tu étais ta meilleure amie ce soir ?",
+  "As-tu eu des pensées répétitives ? Quel était leur thème ?",
+  "Qu'est-ce qui t'a surpris·e dans ta journée ?",
+  "Comment ton énergie du matin comparait à celle du soir ?",
+  "Qu'est-ce qui t'a rendu·e fier·e de toi, même imperceptiblement ?",
+  "Y a-t-il quelque chose que tu as repoussé par peur ou par fatigue ?",
+  "Comment étaient tes pensées sur ton corps aujourd'hui ?",
+  "Qu'est-ce que la version de toi dans 6 mois te demanderait de faire ce soir ?",
+  "Y a-t-il un soin que tu voudrais intégrer demain ?",
+];
+
+function getJournalQuestion() {
+  const now = new Date();
+  const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+  return JOURNAL_QUESTIONS[dayOfYear % JOURNAL_QUESTIONS.length];
+}
+
+// ── Hydration render ──────────────────────────────────────────────────────────
+function renderHydro() {
+  const s = state[currentDay];
+  const count = s.hydro || 0;
+  document.getElementById('hydroCount').textContent = count;
+  const container = document.getElementById('hydroGlasses');
+  container.innerHTML = '';
+  for (let i = 0; i < 8; i++) {
+    const btn = document.createElement('div');
+    btn.className = 'glass-btn' + (i < count ? ' filled' : '');
+    btn.textContent = '💧';
+    btn.addEventListener('click', () => {
+      if (i < state[currentDay].hydro) {
+        state[currentDay].hydro = i;
+      } else {
+        state[currentDay].hydro = i + 1;
+      }
+      saveState();
+      renderHydro();
+    });
+    container.appendChild(btn);
+  }
+}
+
+// ── Journal render ────────────────────────────────────────────────────────────
+function renderJournal() {
+  const s = state[currentDay];
+  document.getElementById('journalQuestion').textContent = getJournalQuestion();
+  const ta = document.getElementById('journalText');
+  ta.value = s.journal || '';
+  const note = document.getElementById('journalSavedNote');
+  note.textContent = s.journal ? '✓ Enregistré' : '';
+}
+
+document.getElementById('journalSaveBtn').addEventListener('click', () => {
+  state[currentDay].journal = document.getElementById('journalText').value;
+  saveState();
+  document.getElementById('journalSavedNote').textContent = '✓ Enregistré';
+});
+
+// ── Monthly view ──────────────────────────────────────────────────────────────
+let monthOffset = 0;
+
+function getMonthKey(year, month) {
+  return `routine_month_${year}_${month}`;
+}
+
+function getDayDataForDate(date) {
+  // Try to find data for a specific date across all week keys
+  const allKeys = Object.keys(localStorage).filter(k => k.startsWith('routine_'));
+  for (const key of allKeys) {
+    try {
+      const data = JSON.parse(localStorage.getItem(key));
+      if (!Array.isArray(data)) continue;
+      // Figure out what week this key corresponds to
+      // Key format: routine_YYYY-WNN
+      const match = key.match(/routine_(\d{4})-W(\d+)/);
+      if (!match) continue;
+      const year = parseInt(match[1]);
+      const week = parseInt(match[2]);
+      // Get monday of that week
+      const jan1 = new Date(year, 0, 1);
+      const monday = new Date(jan1);
+      monday.setDate(jan1.getDate() + (week - 1) * 7 - jan1.getDay() + 1);
+      for (let d = 0; d < 7; d++) {
+        const dayDate = new Date(monday);
+        dayDate.setDate(monday.getDate() + d);
+        if (dayDate.toDateString() === date.toDateString() && data[d]) {
+          return data[d];
+        }
+      }
+    } catch(e) {}
+  }
+  return null;
+}
+
+function renderMonthly() {
+  const now = new Date();
+  const target = new Date(now.getFullYear(), now.getMonth() + monthOffset, 1);
+  const year = target.getFullYear();
+  const month = target.getMonth();
+
+  const monthNames = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  document.getElementById('monthTitle').textContent = monthNames[month] + ' ' + year;
+
+  const grid = document.getElementById('monthGrid');
+  grid.innerHTML = '';
+
+  // Day labels
+  ['Lu','Ma','Me','Je','Ve','Sa','Di'].forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'month-day-label';
+    el.textContent = d;
+    grid.appendChild(el);
+  });
+
+  // First day offset (Monday = 0)
+  const firstDay = new Date(year, month, 1);
+  const offset = (firstDay.getDay() + 6) % 7;
+  for (let i = 0; i < offset; i++) {
+    const el = document.createElement('div');
+    el.className = 'month-cell empty';
+    grid.appendChild(el);
+  }
+
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  let totalPct = 0, activeDays = 0, moodSum = 0, moodCount = 0, hydroSum = 0, hydroDays = 0;
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const date = new Date(year, month, d);
+    const cell = document.createElement('div');
+    cell.className = 'month-cell';
+    cell.textContent = d;
+
+    if (date.toDateString() === now.toDateString()) cell.classList.add('today');
+
+    const dayData = getDayDataForDate(date);
+    if (dayData && dayData.checked && dayData.checked.length > 0) {
+      const pct = Math.round((dayData.checked.length / 4) * 100);
+      totalPct += pct; activeDays++;
+      if (pct >= 75) cell.classList.add('mc-good');
+      else if (pct >= 40) cell.classList.add('mc-med');
+      else cell.classList.add('mc-low');
+      cell.title = pct + '%';
+    }
+    if (dayData && dayData.mood) { moodSum += dayData.mood; moodCount++; }
+    if (dayData && dayData.hydro) { hydroSum += dayData.hydro; hydroDays++; }
+
+    grid.appendChild(cell);
+  }
+
+  // Month stats
+  const moodEmojis = ['😶‍🌫️','😔','😌','🌿','✨'];
+  const avgMood = moodCount > 0 ? Math.round(moodSum / moodCount) : null;
+  const avgHydro = hydroDays > 0 ? (hydroSum / hydroDays).toFixed(1) : null;
+  const avgPct = activeDays > 0 ? Math.round(totalPct / activeDays) : 0;
+
+  document.getElementById('monthStatCards').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-card-label">Jours actifs</div>
+      <div class="stat-card-value">${activeDays}</div>
+      <div class="stat-card-sub">sur ${daysInMonth} jours</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">Complétion moy.</div>
+      <div class="stat-card-value">${avgPct}%</div>
+      <div class="stat-card-sub">jours actifs</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">Humeur moy.</div>
+      <div class="stat-card-value">${avgMood ? moodEmojis[avgMood-1] : '—'}</div>
+      <div class="stat-card-sub">${avgMood ? avgMood + '/5' : 'pas de données'}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">Hydratation moy.</div>
+      <div class="stat-card-value">${avgHydro || '—'}</div>
+      <div class="stat-card-sub">${avgHydro ? 'verres / jour' : 'pas de données'}</div>
+    </div>
+  `;
+}
+
+document.getElementById('prevMonth').addEventListener('click', () => { monthOffset--; renderMonthly(); });
+document.getElementById('nextMonth').addEventListener('click', () => { monthOffset++; renderMonthly(); });
+
 function renderAll() {
   renderHeader();
   renderDayNav();
   renderMainView();
   renderStats();
+  renderHydro();
+  renderJournal();
 }
 
 // ── View toggle ───────────────────────────────────────────────────────────────
 function showView(view) {
   const main = document.getElementById('mainView');
   const stats = document.getElementById('statsView');
-  const navToday = document.getElementById('navToday');
-  const navStats = document.getElementById('navStats');
-
-  if (view === 'main') {
-    main.classList.remove('hidden');
-    stats.classList.remove('visible');
-    navToday.classList.add('active');
-    navStats.classList.remove('active');
-  } else {
-    main.classList.add('hidden');
-    stats.classList.add('visible');
-    navToday.classList.remove('active');
-    navStats.classList.add('active');
-    renderStats();
-  }
+  const monthly = document.getElementById('monthlyView');
+  document.getElementById('navToday').classList.toggle('active', view === 'main');
+  document.getElementById('navStats').classList.toggle('active', view === 'stats');
+  document.getElementById('navMonthly').classList.toggle('active', view === 'monthly');
+  main.classList.toggle('hidden', view !== 'main');
+  stats.classList.toggle('visible', view === 'stats');
+  monthly.classList.toggle('visible', view === 'monthly');
+  if (view === 'stats') renderStats();
+  if (view === 'monthly') renderMonthly();
 }
 
 // Reset
 document.getElementById('resetBtn').addEventListener('click', () => {
   if (confirm('Réinitialiser toutes les données de cette semaine ?')) {
-    state = DAYS_DATA.map(() => ({ checked: [], mood: null, energy: null }));
+    state = DAYS_DATA.map(() => ({ checked: [], mood: null, energy: null, hydro: 0, journal: '' }));
     saveState();
     renderAll();
   }
